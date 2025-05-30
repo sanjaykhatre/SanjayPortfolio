@@ -1,32 +1,36 @@
 import React from "react";
 import { motion } from "framer-motion";
+import meydit from "../assets/meydit.jpeg";
+import programiz from "../assets/programiz.png";
+import curaHealth from "../assets/curaHealth.png";
+import sewa360 from "../assets/sewa360.png";
 
 const projects = [
   {
     title: "Meyd.it",
     description: "Custom clothing web platform for modern tailoring.",
-    image: "../assets/meydit.jpeg",
+    image: meydit,
     tech: ["Next.js", "Node.js", "postgreSQL"],
     link: "https://meyd.it",
   },
   {
     title: "HTML Editor",
     description: "Browser-based HTML playground with 50k+ users.",
-    image: "../assets/programiz.png",
+    image: programiz,
     tech: ["Next.js", "Material-UI"],
     link: "https://www.programiz.com/html/online-compiler/",
   },
   {
     title: "SQL Compiler",
     description: "Browser-based SQL playground with 50k+ users.",
-    image: "../assets/programiz.png",
+    image: programiz,
     tech: ["Next.js", "Material-UI"],
     link: "https://www.programiz.com/sql/online-compiler/",
   },
   {
     title: "Cura Health",
     description: "Telehealth admin dashboard built for Nepal's healthcare.",
-    image: "../assets/curaHealth.png",
+    image: curaHealth,
     tech: [
       "React",
       "Firebase",
@@ -40,7 +44,7 @@ const projects = [
   {
     title: "Sewa360",
     description: "SaaS for HR and audit management.",
-    image: "../assets/sewa360.png",
+    image: sewa360,
     tech: ["React", "Firebase"],
     link: "https://app.sewa360.com/",
   },

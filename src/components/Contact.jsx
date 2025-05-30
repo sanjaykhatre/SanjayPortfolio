@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import sanj from "../assets/sanj.png";
 
 const Contact = () => {
   const formRef = useRef();
@@ -44,7 +45,7 @@ const Contact = () => {
           }}
         >
           <img
-            src="../assets/sanj.png"
+            src={sanj}
             alt="Avatar"
             className="contact-avatar"
             style={{ width: "100%", maxWidth: 300 }}
