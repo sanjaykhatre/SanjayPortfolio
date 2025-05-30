@@ -1,4 +1,3 @@
-// src/components/ZoomImage.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import myImage from "../assets/sanjay.jpg";

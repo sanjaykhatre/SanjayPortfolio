@@ -11,6 +11,8 @@ import git from "../assets/git.png";
 import next from "../assets/next.png";
 import firebase from "../assets/firebase.png";
 import sql from "../assets/postgresql.png";
+import aws from "../assets/aws.png";
+import Experience from "./Experience";
 
 const techIcons = [
   { img: html, name: "HTML" },
@@ -18,11 +20,12 @@ const techIcons = [
   { img: js, name: "JavaScript" },
   { img: react, name: "React" },
   { img: next, name: "Next.js" },
+  { img: node, name: "Node.js" },
   { img: express, name: "Express.js" },
   { img: mongo, name: "MongoDB" },
-  { img: node, name: "Node.js" },
-  { img: git, name: "Git" },
   { img: firebase, name: "Firebase" },
+  { img: aws, name: "AWS" },
+  { img: git, name: "Git" },
   { img: sql, name: "PostgreSQL" },
 ];
 
@@ -39,7 +42,6 @@ const About = () => {
         gap: "40px",
       }}
     >
-      {/* Skills Section */}
       <div style={{ flex: 1, minWidth: "320px" }}>
         <motion.h2
           initial={{ y: -30, opacity: 0 }}
@@ -55,7 +57,7 @@ const About = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: "20px",
+            gap: "45px",
           }}
         >
           {techIcons.map((tech, i) => (
@@ -88,52 +90,16 @@ const About = () => {
           ))}
         </div>
       </div>
-
-      {/* GitHub Daily Logs Section */}
-      <div
-        style={{
-          flex: 1,
-          minWidth: "320px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "20px",
-        }}
-      >
+      <div style={{ flex: 1, minWidth: "320px" }}>
         <motion.h2
           initial={{ y: -30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          style={{ color: "#ff3c41", marginBottom: 10 }}
+          style={{ color: "#ff3c41", textAlign: "center", marginBottom: 30 }}
         >
-          GITHUB LOGS
+          EXPERIENCE
         </motion.h2>
-
-        <img
-          src={`https://ghchart.rshah.org/ff3c41/sanjaykhatre`}
-          alt="GitHub chart"
-          style={{
-            width: "100%",
-            maxWidth: "100%",
-            borderRadius: 12,
-            border: "1px solid #333",
-          }}
-        />
-
-        <a
-          href="https://github.com/sanjaykhatre"
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            color: "#ff3c41",
-            textDecoration: "none",
-            marginTop: "10px",
-            fontWeight: "bold",
-          }}
-        >
-          View GitHub Profile →
-        </a>
+        <Experience />
       </div>
     </div>
   );

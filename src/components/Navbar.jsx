@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -12,10 +11,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav style={{ position: "fixed" }} className="navbar">
       <div className="navbar__logo">Sanjay.dev</div>
 
-      <ul className={`navbar__links ${open ? "open" : ""}`}>
+      <ul
+        style={{ marginRight: "20px" }}
+        className={`navbar__links ${open ? "open" : ""}`}
+      >
         {["home", "about", "projects", "contact"].map((id) => (
           <li key={id} onClick={() => handleScroll(id)}>
             {id.charAt(0).toUpperCase() + id.slice(1)}

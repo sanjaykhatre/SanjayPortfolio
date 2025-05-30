@@ -1,30 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Experience = () => (
-  <div style={{ padding: "60px 20px" }}>
-    <h2 style={{ textAlign: "center" }}>Experience</h2>
-    <div style={{ marginTop: 40 }}>
-      <h3>Full Stack Engineer – Meyd.it, Sydney</h3>
-      <p>
-        <i>Aug 2024 – Present</i>
-      </p>
-      <ul>
-        <li>Translated UX/UI designs into maintainable code.</li>
-        <li>Improved app performance and stability.</li>
-      </ul>
+const careerEvents = [
+  {
+    id: 1,
+    date: "Aug 2024 – Present",
+    title: "Full Stack Engineer",
+    location: "Meyd.it • Sydney, Australia",
+    color: "rgb(255,60,65)",
+    icon: "💼",
+  },
+  {
+    id: 2,
+    date: "Oct 2020 – June 2023",
+    title: "Full Stack Engineer",
+    location: "Brainant’s Technology • Kathmandu, Nepal",
+    color: "rgb(255,60,65)",
+    icon: "💼",
+  },
+  {
+    id: 3,
+    date: "Jun 2020 – Sept 2020",
+    title: "Web Developer ",
+    location: "Cartmade Ecommerce • Kathmandu, Nepal",
+    color: "rgb(255,60,65)",
+    icon: "🛒",
+  },
+];
 
-      <h3 style={{ marginTop: 30 }}>
-        Full Stack Engineer – Brainant’s Technology
-      </h3>
-      <p>
-        <i>Oct 2020 – Jun 2023</i>
-      </p>
-      <ul>
-        <li>Built React.js dashboards and APIs with Node.js</li>
-        <li>Worked in Agile environment with React Query + Tailwind</li>
-      </ul>
+export default function ExperienceTimeline() {
+  const displayEvents = careerEvents;
+
+  return (
+    <div className="timeline-wrapper">
+      <div className="timeline-container">
+        {displayEvents.map((ev, idx) => (
+          <div
+            key={ev.id}
+            className={`timeline-item ${idx % 2 === 0 ? "left" : "right"}`}
+          >
+            <span style={{ background: ev.color }}>{ev.icon}</span>
+
+            <div className="timeline-content">
+              <span className="timeline-date">{ev.date}</span>
+              <h4 style={{ color: ev.color }}>{ev.title}</h4>
+              <p>{ev.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
-
-export default Experience;
+  );
+}

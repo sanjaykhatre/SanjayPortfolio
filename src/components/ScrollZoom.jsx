@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import ProjectScrollPage from "./ProjectScroll";
 import About from "./About";
 
 const ScrollZoom = () => {
@@ -9,67 +10,117 @@ const ScrollZoom = () => {
     offset: ["start start", "end end"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 3]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 950);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const rawScale = useTransform(scrollYProgress, [0, 0.5], [1, 3]);
+  const scale = isMobile ? 1 : rawScale;
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const fullText =
+    "I’m a software engineer with over three years of hands-on experience in application development, deeply committed to continuous learning and creating a team culture where everyone can grow and thrive. I’m also happy to relocate for the right opportunity and excited to take on challenges that push my skills forward.";
+  const [displayedText, setDisplayedText] = useState("");
+  useEffect(() => {
+    let idx = 0;
+    const type = () => {
+      setDisplayedText(fullText.slice(0, idx + 1));
+      idx++;
+      if (idx < fullText.length) {
+        setTimeout(type, 5); // adjust speed (ms) here
+      }
+    };
+    // start typing a little after mount
+    const starter = setTimeout(type, 300);
+    return () => clearTimeout(starter);
+  }, [fullText]);
 
   return (
-    <div ref={ref} style={{ minHeight: "200vh", backgroundColor: "#000" }}>
+    <div
+      ref={ref}
+      style={{
+        backgroundColor: "#000",
+        color: "#fff",
+      }}
+    >
+      <h2
+        style={{
+          color: "#ff3c41",
+          fontSize: isMobile ? "1.5rem" : "2rem",
+          marginBottom: "1rem",
+          textAlign: "center",
+        }}
+      >
+        About
+      </h2>
+
       <motion.div
         style={{
           position: "sticky",
-          top: "20%",
+          top: "5%",
+          zIndex: 2,
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-around",
           alignItems: "center",
+          flexWrap: "wrap",
           height: "60vh",
           scale,
-          opacity,
-          zIndex: 2,
+          opacity: imageOpacity,
         }}
       >
         <img
           src={"/images/sanj.png"}
           alt="Sanjay"
           style={{
-            width: 300,
-            height: 300,
+            width: isMobile ? "150px" : "300px",
+            height: isMobile ? "150px" : "300px",
             borderRadius: "50%",
+            boxShadow: "0 4px 20px #ff3c41",
             objectFit: "cover",
           }}
         />
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+
+        <p
           style={{
-            color: "#fff",
+            color: "#ff3c41",
             fontSize: "1.2rem",
             textAlign: "center",
-            marginTop: 20,
-            maxWidth: 600,
+            margin: 20,
+            maxWidth: isMobile ? "90%" : 600,
+            whiteSpace: "pre-wrap",
           }}
         >
-          Fully committed to the philosophy of life-long learning, I’m a full
-          stack developer with a deep passion for JavaScript, React and all
-          things web development. The unique combination of creativity, logic,
-          technology and never running out of new things to discover, drives my
-          excitement and passion for web development. When I’m not at my
-          computer I like to spend my time reading, keeping fit and playing
-          guitar.
-        </motion.p>
+          {displayedText}
+          <span
+            style={{
+              display: "inline-block",
+              width: "1ch",
+              backgroundColor: "#ff3c41",
+              marginLeft: 2,
+              animation: "blink 1s step-end infinite",
+            }}
+          />
+        </p>
       </motion.div>
+      <About />
 
-      <motion.div
-        style={{
-          opacity: aboutOpacity,
-          paddingTop: "100vh",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <About />
-      </motion.div>
+      {/* Projects section */}
+      <div id="projects">
+        <ProjectScrollPage />
+      </div>
+
+      {/* blinking cursor keyframes */}
+      <style>
+        {`
+          @keyframes blink {
+            50% { opacity: 0 }
+          }
+        `}
+      </style>
     </div>
   );
 };

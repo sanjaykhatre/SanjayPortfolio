@@ -6,35 +6,42 @@ const projects = [
     title: "Meyd.it",
     description: "Custom clothing web platform for modern tailoring.",
     image: "/images/meydit.jpeg",
-    tech: ["React", "Firebase"],
+    tech: ["Next.js", "Node.js", "postgreSQL"],
     link: "https://meyd.it",
   },
   {
     title: "HTML Editor",
     description: "Browser-based HTML playground with 50k+ users.",
     image: "/images/programiz.png",
-    tech: ["React", "Tailwind", "Express"],
+    tech: ["Next.js", "Material-UI"],
     link: "https://www.programiz.com/html/online-compiler/",
   },
   {
     title: "SQL Compiler",
     description: "Browser-based SQL playground with 50k+ users.",
     image: "/images/programiz.png",
-    tech: ["React", "Tailwind", "Express"],
+    tech: ["Next.js", "Material-UI"],
     link: "https://www.programiz.com/sql/online-compiler/",
   },
   {
     title: "Cura Health",
     description: "Telehealth admin dashboard built for Nepal's healthcare.",
     image: "/images/curaHealth.png",
-    tech: ["React", "Node.js"],
+    tech: [
+      "React",
+      "Firebase",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "Meilisearch",
+    ],
     link: "https://play.google.com/store/apps/details?id=com.curahealth",
   },
   {
     title: "Sewa360",
     description: "SaaS for HR and audit management.",
     image: "/images/sewa360.png",
-    tech: ["Next.js", "MongoDB"],
+    tech: ["React", "Firebase"],
     link: "https://app.sewa360.com/",
   },
 ];
@@ -42,7 +49,7 @@ const projects = [
 const ProjectScrollPage = () => {
   return (
     <section className="project-section">
-      <h2 className="project-heading">Featured Projects</h2>
+      <h2 className="project-heading"> Projects</h2>
       <div className="project-grid">
         {projects.map((project, i) => (
           <motion.div

@@ -4,6 +4,21 @@ const Home = () => {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
 
+  const fullName = "Sanjay — ";
+  const [displayedName, setDisplayedName] = useState("");
+
+  useEffect(() => {
+    let idx = 0;
+    const typer = setInterval(() => {
+      setDisplayedName(fullName.slice(0, idx + 1));
+      idx += 1;
+      if (idx === fullName.length) {
+        clearInterval(typer);
+      }
+    }, 100);
+    return () => clearInterval(typer);
+  }, []);
+
   useEffect(() => {
     if (!vantaEffect && window.VANTA) {
       const effect = window.VANTA.NET({
@@ -19,11 +34,13 @@ const Home = () => {
       });
       setVantaEffect(effect);
     }
-
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
+    return () => vantaEffect && vantaEffect.destroy();
   }, [vantaEffect]);
+
+  const handleScroll = (id) => {
+    const el = document.getElementById(id);
+    el && el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div
@@ -39,10 +56,19 @@ const Home = () => {
         }}
       >
         <h1>
-          Hello, I'm <span style={{ color: "#ff3c41" }}>Sanjay</span>.
+          Hello, I&apos;m{" "}
+          <span style={{ color: "#ff3c41", whiteSpace: "pre" }}>
+            {displayedName}
+            <span className="cursor" />
+          </span>
         </h1>
-        <h2>I'm a full stack web developer.</h2>
+        <h2>
+          a Software Engineer passionate about building clean, efficient, and
+          impactful
+          <span style={{ color: "#ff3c41" }}> applications.</span>{" "}
+        </h2>
         <button
+          onClick={() => handleScroll("projects")}
           style={{
             marginTop: 20,
             padding: "10px 20px",
@@ -55,6 +81,21 @@ const Home = () => {
           View my work ↓
         </button>
       </div>
+
+      <style>
+        {`
+          .cursor {
+            display: inline-block;
+            width: 1ch;
+            background-color: #ff3c41;
+            margin-left: 2px;
+            animation: blink 1s steps(2, start) infinite;
+          }
+          @keyframes blink {
+            to { visibility: hidden; }
+          }
+        `}
+      </style>
     </div>
   );
 };
