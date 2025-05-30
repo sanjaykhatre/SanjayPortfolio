@@ -5,28 +5,28 @@ const projects = [
   {
     title: "Meyd.it",
     description: "Custom clothing web platform for modern tailoring.",
-    image: "/images/meydit.jpeg",
+    image: "../assets/meydit.jpeg",
     tech: ["Next.js", "Node.js", "postgreSQL"],
     link: "https://meyd.it",
   },
   {
     title: "HTML Editor",
     description: "Browser-based HTML playground with 50k+ users.",
-    image: "/images/programiz.png",
+    image: "../assets/programiz.png",
     tech: ["Next.js", "Material-UI"],
     link: "https://www.programiz.com/html/online-compiler/",
   },
   {
     title: "SQL Compiler",
     description: "Browser-based SQL playground with 50k+ users.",
-    image: "/images/programiz.png",
+    image: "../assets/programiz.png",
     tech: ["Next.js", "Material-UI"],
     link: "https://www.programiz.com/sql/online-compiler/",
   },
   {
     title: "Cura Health",
     description: "Telehealth admin dashboard built for Nepal's healthcare.",
-    image: "/images/curaHealth.png",
+    image: "../assets/curaHealth.png",
     tech: [
       "React",
       "Firebase",
@@ -40,7 +40,7 @@ const projects = [
   {
     title: "Sewa360",
     description: "SaaS for HR and audit management.",
-    image: "/images/sewa360.png",
+    image: "../assets/sewa360.png",
     tech: ["React", "Firebase"],
     link: "https://app.sewa360.com/",
   },

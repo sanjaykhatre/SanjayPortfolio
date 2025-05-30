@@ -73,7 +73,7 @@ const ScrollZoom = () => {
         }}
       >
         <img
-          src={"/images/sanj.png"}
+          src={"../assets/sanj.png"}
           alt="Sanjay"
           style={{
             width: isMobile ? "150px" : "300px",

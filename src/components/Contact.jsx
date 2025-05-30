@@ -44,7 +44,7 @@ const Contact = () => {
           }}
         >
           <img
-            src="/images/sanj.png"
+            src="../assets/sanj.png"
             alt="Avatar"
             className="contact-avatar"
             style={{ width: "100%", maxWidth: 300 }}
