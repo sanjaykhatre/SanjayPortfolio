@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ProjectScrollPage from "./ProjectScroll";
 import About from "./About";
+import sanj from "../assets/sanj.png";
 
 const ScrollZoom = () => {
   const ref = useRef(null);
@@ -73,7 +74,7 @@ const ScrollZoom = () => {
         }}
       >
         <img
-          src={"../assets/sanj.png"}
+          src={sanj}
           alt="Sanjay"
           style={{
             width: isMobile ? "150px" : "300px",
